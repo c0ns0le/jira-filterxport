@@ -12,9 +12,9 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "src/bg/background.js"
-    ],
-    "persistent": true
+      "src/bg/background.js",
+      "js/sha256.js"
+    ]
   },
   "browser_action": {
     "default_icon": "icons/icon19.png",
@@ -25,7 +25,8 @@
     "clipboardRead",
     "clipboardWrite",
     "contextMenus",
-    "<all_urls>"
+    "<all_urls>",
+    "storage"
   ],
   "content_scripts": [
     {
