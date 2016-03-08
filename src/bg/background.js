@@ -14,7 +14,7 @@ var onSaveClicked = function (event) {
             window.console.log(items);
 
             for (var item in items) {
-                if (items[item].id === id) {
+                if (item === id) {
                     window.console.log("filter already exists name:" + items[item].name);
                     return;
                 }
