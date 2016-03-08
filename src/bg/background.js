@@ -7,12 +7,20 @@ var onSaveClicked = function (event) {
     window.console.log("onSaveClicked: check for hash" + id);
 
     chrome.storage.sync.get("jiraFilters", function (items) {
-        window.console.log(items);
 
-        /*if (item.id === id) {
-            window.console.log("filter already exists name:" + item.name);
-            return;
-        }*/
+        if (Object.keys(items).length !== 0) {
+
+            items = items.jiraFilters;
+            window.console.log(items);
+
+            for (var item in items) {
+                if (items[item].id === id) {
+                    window.console.log("filter already exists name:" + items[item].name);
+                    return;
+                }
+            }
+
+        }
 
         window.console.log("saving new filter");
         items[id] = {
@@ -21,8 +29,8 @@ var onSaveClicked = function (event) {
             "filter": filter
         };
 
-        window.console.log({"jiraFilters":items});
-        chrome.storage.sync.set({"jiraFilters":items}, function () {
+        window.console.log(items);
+        chrome.storage.sync.set({"jiraFilters": items}, function () {
             window.console.log("all filters saved");
         });
     });
