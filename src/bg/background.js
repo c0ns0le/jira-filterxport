@@ -1,5 +1,4 @@
-// save current selection to chrome storage
-var onSaveClicked = function (event) {
+var onSaveClicked = function (event, tab) {
 
     var filter = event.selectionText;
     var id = CryptoJS.SHA256(filter).toString();
@@ -15,24 +14,38 @@ var onSaveClicked = function (event) {
 
             for (var item in items) {
                 if (item === id) {
-                    window.console.log("filter already exists name:" + items[item].name);
+                    // if item exists send exists message and return
+                    window.console.log("filter already exist, firing exist message");
+                    chrome.tabs.sendMessage(tab.id, {filterAlreadyExists: items[item].name});
                     return;
                 }
             }
 
         }
 
-        window.console.log("saving new filter");
-        items[id] = {
+        // create new filter message and fire him to the content script
+        var newFilter = {
             "id": id.toString(),
-            "name": "fooBar",
+            "name": "",
             "filter": filter
         };
 
-        window.console.log(items);
-        chrome.storage.sync.set({"jiraFilters": items}, function () {
-            window.console.log("all filters saved");
+        window.console.log("requesting new filter name send ping...");
+        chrome.tabs.sendMessage(tab.id, {addFilter: newFilter}, function (response) {
+            window.console.log("message send, got... " + response.status);
         });
+
+        /* window.console.log("saving new filter");
+         items[id] = {
+         "id": id.toString(),
+         "name": "fooBar",
+         "filter": filter
+         };
+
+         window.console.log(items);
+         chrome.storage.sync.set({"jiraFilters": items}, function () {
+         window.console.log("all filters saved");
+         });*/
     });
 };
 
