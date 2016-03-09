@@ -1,3 +1,32 @@
-/**
- * Place your custom CSS styles here.
- **/
+div.jira-filter-xport-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    z-index: 10000;
+}
+
+div#overlay-form{
+    position: absolute;
+    z-index: 1000;
+    width: 400px;
+    height: 150px;
+    top: 30%;
+    left: 35%;
+}
+
+div.inner-form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 20px 10px 20px;
+    border: 1px solid black;
+    background-color: #eee;
+    border-radius: 3px;
+    box-shadow: #efefef 0 0 20px;
+}
