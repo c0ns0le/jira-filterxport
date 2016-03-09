@@ -35,17 +35,6 @@ var onSaveClicked = function (event, tab) {
             window.console.log("message send, got... " + response.status);
         });
 
-        /* window.console.log("saving new filter");
-         items[id] = {
-         "id": id.toString(),
-         "name": "fooBar",
-         "filter": filter
-         };
-
-         window.console.log(items);
-         chrome.storage.sync.set({"jiraFilters": items}, function () {
-         window.console.log("all filters saved");
-         });*/
     });
 };
 
