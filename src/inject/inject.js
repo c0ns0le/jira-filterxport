@@ -57,13 +57,10 @@ var JiraFilterXport = function () {
 
                 if (filterData && filterName) {
                     chrome.storage.sync.get("jiraFilters", function (items) {
-                        items = items.jiraFilters;
 
-                        window.console.log( JSON.parse(atob(filterData)));
+                        items = Object.keys(items).length !== 0? items.jiraFilters: {};
 
-                        /*
                         var newItem = JSON.parse(atob(filterData));
-
                         newItem.name = filterName;
                         items[newItem.id] = newItem;
 
@@ -71,7 +68,7 @@ var JiraFilterXport = function () {
                         chrome.storage.sync.set({"jiraFilters": items}, function () {
                             window.console.log("new filter saved");
                         });
-                        */
+
                     });
                 }
 
