@@ -25,10 +25,10 @@ div.inner-form {
     width: 100%;
     margin: 0 auto;
     padding: 10px 20px;
-    border: 1px solid black;
+    border: 1px solid #337ab7;
     background-color: #eee;
     border-radius: 3px;
-    box-shadow: #efefef 0 0 20px;
+    box-shadow: #337ab7 0 0 20px;
 }
 
 button.jira-filter-xport-btn{
@@ -48,25 +48,25 @@ button.jira-filter-xport-btn{
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid black;
+    border: 1px solid #337ab7;
     border-radius: 4px;
     margin: 5px;
     background-color: #fff;
 }
 
 button.save:hover{
-    border: 1px solid darkgreen;
-    box-shadow: darkgreen 0 0 5px;
+    border: 1px solid #337ab7;
+    box-shadow: #337ab7 0 0 5px;
 }
 
 button.cancel:hover{
-    border: 1px solid darkred;
-    box-shadow: darkred 0 0 5px;
+    border: 1px solid #337ab7;
+    box-shadow: #337ab7 0 0 5px;
 }
 
 button.close:hover{
-    border: 1px solid darkgreen;
-    box-shadow: darkgreen 0 0 5px;
+    border: 1px solid #337ab7;
+    box-shadow: #337ab7 0 0 5px;
 }
 
 input.filter-input{
@@ -74,7 +74,7 @@ input.filter-input{
     width: 240px;
     height: 20px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #337ab7;
     margin-right: 5px;
     font-size: 14px;
 }

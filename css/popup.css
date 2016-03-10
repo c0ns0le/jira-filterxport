@@ -1,0 +1,51 @@
+html, body{
+    height: 40px;
+}
+
+div#mainPopup {
+    width: 350px;
+    max-height: 210px;
+    overflow: scroll;
+}
+
+span.filterName{
+    overflow: hidden;
+    width: inherit;
+    display: inherit;
+}
+
+span.filterActions {
+    width: 100%;
+    display: block;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 3px;
+}
+
+.list-group {
+    padding-left: 0;
+    margin-bottom: 0 !important;
+}
+
+.list-group-item:hover {
+    border: 1px solid #337ab7;
+    background-color: #337ab7;
+    opacity: 0.8;
+}
+
+button.share-btn{
+    display: none;
+    font-size: 25px;
+    float: right;
+    margin: 5px 3px 0px;
+}
+
+span.filterActions:hover > button.share-btn{
+    display: block;
+}
+
+input.copyhelper{
+    visibility: hidden;
+}
