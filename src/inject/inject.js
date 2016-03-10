@@ -88,7 +88,7 @@ var JiraFilterXport = function () {
             var form = document.createElement("div");
             form.setAttribute("id", "jira-filter-xport-overlay-form");
             form.innerHTML = '<div class="inner-form">' +
-                '<span>This filter already exists in you storage.</span><br/>' +
+                '<span>This filter already exists in your storage.</span><br/>' +
                 '<span>Take a look a your <strong>'+filterName+'</strong> filter.</span>' +
                 '<br/><button id="jira-filter-xport-new-filter-name-close" class="jira-filter-xport-btn close">Close</button>' +
                 '</div>';
