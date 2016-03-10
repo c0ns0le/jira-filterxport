@@ -22,10 +22,18 @@ var JiraFilterXport = function () {
          * @param filterData
          */
         generateAddNewFilter: function (filterData) {
-            this.generateOverlay();
+
+            //check if element is present
+            var selectorTitle = document.querySelector('section#content header.saved-search-selector h1.search-title');
+            if(!selectorTitle){
+                window.console.log("it seems that, we art not in filter area. Cancel request");
+                return;
+            }
 
             //grep new filter name
-            var filterName = document.querySelector('section#content header.saved-search-selector h1.search-title').innerHTML;
+            var filterName = selectorTitle.innerHTML;
+            this.generateOverlay();
+
             /*
              @TODO codify form
              */
