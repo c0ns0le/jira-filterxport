@@ -8,7 +8,7 @@ var JiraFilterXport = function () {
         /**
          * generates the basic overlay
          */
-        generateMain: function () {
+        generateOverlay: function () {
 
             this.overlay = document.createElement("div");
             this.overlay.setAttribute("class", "jira-filter-xport-overlay");
@@ -19,10 +19,10 @@ var JiraFilterXport = function () {
         },
         /**
          * generates the new filter form
-         * @returns {Element|*}
+         * @param filterData
          */
         generateAddNewFilter: function (filterData) {
-            this.generateMain();
+            this.generateOverlay();
 
             //grep new filter name
             var filterName = document.querySelector('section#content header.saved-search-selector h1.search-title').innerHTML;
@@ -77,21 +77,51 @@ var JiraFilterXport = function () {
             }, false);
 
 
+        },
+        /**
+         * generates the filters exists windows
+         * @param filterName
+         */
+        generateFilterExists: function(filterName){
+            this.generateOverlay();
+
+            var form = document.createElement("div");
+            form.setAttribute("id", "jira-filter-xport-overlay-form");
+            form.innerHTML = '<div class="inner-form">' +
+                '<span>This filter already exists in you storage.</span><br/>' +
+                '<span>Take a look a your <strong>'+filterName+'</strong> filter.</span>' +
+                '<br/><button id="jira-filter-xport-new-filter-name-close" class="jira-filter-xport-btn close">Close</button>' +
+                '</div>';
+
+            document.body.appendChild(form);
+
+            //Cancel
+            document.getElementById("jira-filter-xport-new-filter-name-close").addEventListener('click', function () {
+                window.console.log("close clicked, remove overlay");
+                document.body.removeChild(document.getElementById("jira-filter-xport-overlay"));
+                document.body.removeChild(document.getElementById("jira-filter-xport-overlay-form"));
+            }, false);
         }
     };
 
     //wait for context event
     chrome.runtime.onMessage.addListener(
         function (request, sender, sendResponse) {
-            if (request.addFilter) {
-                sendResponse({status: "pong"});
+            sendResponse({status: "pong"});
+            var filterFormInterface = new FilterXportInterface();
 
+            if (request.addFilter) {
                 window.console.log("got new filter request, init window");
                 window.console.log(request.addFilter);
 
-                var newFilterInterface = new FilterXportInterface();
                 //passing filter to form
-                newFilterInterface.generateAddNewFilter(btoa(JSON.stringify(request.addFilter)));
+                filterFormInterface.generateAddNewFilter(btoa(JSON.stringify(request.addFilter)));
+            }else if (request.filterAlreadyExists){
+                window.console.log("got filter exists request, init window");
+                window.console.log(request.filterAlreadyExists);
+
+                //init filter exists windows
+                filterFormInterface.generateFilterExists(request.filterAlreadyExists);
             }
         });
 }();

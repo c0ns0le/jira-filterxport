@@ -55,16 +55,22 @@ button.jira-filter-xport-btn{
 }
 
 button.save:hover{
-    border: 1px solid green;
-    box-shadow: green 0 0 5px;
+    border: 1px solid darkgreen;
+    box-shadow: darkgreen 0 0 5px;
 }
 
 button.cancel:hover{
-    border: 1px solid red;
-    box-shadow: red 0 0 5px;
+    border: 1px solid darkred;
+    box-shadow: darkred 0 0 5px;
+}
+
+button.close:hover{
+    border: 1px solid darkgreen;
+    box-shadow: darkgreen 0 0 5px;
 }
 
 input.filter-input{
+    text-indent: 5px;
     width: 240px;
     height: 20px;
     border-radius: 5px;
