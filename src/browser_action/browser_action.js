@@ -32,7 +32,7 @@ var browserAction = function () {
 
                 //copy to clipboard
                 var filter = JSON.parse(atob(button.dataset.filter));
-                copyToClipboard(filter.filter);
+                copyToClipboard(chrome.i18n.getMessage("ShareMailPublish", filter.filter));
 
                 //open mail client
                 var emailUrl = "mailto:foor@bar.com?subject=Checkout my cool Jira filter: " + filter.name;
