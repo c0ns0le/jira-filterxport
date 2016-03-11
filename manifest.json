@@ -18,7 +18,7 @@
   },
   "browser_action": {
     "default_icon": "icons/icon19.png",
-    "default_title": "Show saved filters",
+    "default_title": "__MSG_extShowSaved__",
     "default_popup": "src/browser_action/browser_action.html"
   },
   "permissions": [

@@ -1,5 +1,46 @@
 {
   "extDescription":{
     "message": "Speichern und teilen Sie Ihre JIRA-Filter mit ein paar Klicks"
+  },
+  "extShowSaved": {
+    "message": "Filter öffnen"
+  },
+  "SaveFilter": {
+    "message": "Filter speichern"
+  },
+  "SaveNewFilter": {
+    "message": "Neuen Filter speichern"
+  },
+  "Save": {
+    "message": "Speichern"
+  },
+  "Cancel": {
+    "message": "Abbrechen"
+  },
+  "Close": {
+    "message": "Schließen"
+  },
+  "FilterAlreadyExists": {
+    "message": "Dieser Filter ist bereits gespeichert"
+  },
+  "NoFilters": {
+    "message": "Keine Filter verfügbar!"
+  },
+  "ShareMail": {
+    "message": "via E-Mail teilen"
+  },
+  "CopyClipboard": {
+    "message": "In die Zwischenablabge"
+  },
+  "DeleteFilter": {
+    "message": "Filter löschen"
+  },
+  "LookAtFilter": {
+    "message": "Überprüfen Sie den Filter: $FilterName$",
+    "placeholders": {
+      "FilterName": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -1,5 +1,46 @@
 {
-  "extDescription":{
+  "extDescription": {
     "message": "Save and share your JIRA-Filters with a few clicks"
+  },
+  "extShowSaved": {
+    "message": "Show saved filters"
+  },
+  "SaveFilter": {
+    "message": "Save Filter"
+  },
+  "SaveNewFilter": {
+    "message": "Save new Filter"
+  },
+  "Save": {
+    "message": "Save"
+  },
+  "Cancel": {
+    "message": "Cancel"
+  },
+  "Close": {
+    "message": "Close"
+  },
+  "FilterAlreadyExists": {
+    "message": "This filter already exists in your storage."
+  },
+  "NoFilters": {
+    "message": "No Filters available!"
+  },
+  "ShareMail": {
+    "message": "share over mail"
+  },
+  "CopyClipboard": {
+    "message": "copy to clipboard"
+  },
+  "DeleteFilter": {
+    "message": "delete filter"
+  },
+  "LookAtFilter": {
+    "message": "Take a look a your $FilterName$ filter.",
+    "placeholders": {
+      "FilterName": {
+        "content": "$1"
+      }
+    }
   }
 }

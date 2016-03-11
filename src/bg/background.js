@@ -20,7 +20,6 @@ var onSaveClicked = function (event, tab) {
                     return;
                 }
             }
-
         }
 
         // create new filter message and fire him to the content script
@@ -39,7 +38,7 @@ var onSaveClicked = function (event, tab) {
 };
 
 chrome.contextMenus.create({
-    "title": "Save Filter",
+    "title": chrome.i18n.getMessage("SaveFilter"),
     "contexts": ["editable"],
     "onclick": onSaveClicked
 });

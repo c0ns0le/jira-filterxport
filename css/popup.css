@@ -1,14 +1,14 @@
-html, body{
+html, body {
     height: 40px;
 }
 
 div#mainPopup {
     width: 350px;
     max-height: 210px;
-    overflow: scroll;
+    overflow: auto;
 }
 
-span.filterName{
+span.filterName {
     overflow: hidden;
     width: inherit;
     display: inherit;
@@ -35,17 +35,17 @@ span.filterActions {
     opacity: 0.8;
 }
 
-button.share-btn{
+button.share-btn {
     display: none;
     font-size: 25px;
     float: right;
     margin: 5px 3px 0px;
 }
 
-span.filterActions:hover > button.share-btn{
+span.filterActions:hover > button.share-btn {
     display: block;
 }
 
-input.copyhelper{
+input.copyhelper {
     visibility: hidden;
 }

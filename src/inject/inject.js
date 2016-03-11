@@ -25,7 +25,7 @@ var JiraFilterXport = function () {
 
             //check if element is present
             var selectorTitle = document.querySelector('section#content header.saved-search-selector h1.search-title');
-            if(!selectorTitle){
+            if (!selectorTitle) {
                 window.console.log("it seems that, we art not in filter area. Cancel request");
                 return;
             }
@@ -40,11 +40,11 @@ var JiraFilterXport = function () {
             var form = document.createElement("div");
             form.setAttribute("id", "jira-filter-xport-overlay-form");
             form.innerHTML = '<div class="inner-form">' +
-                '<h5>Save new Filter</h5>' +
+                '<h5>' + chrome.i18n.getMessage("SaveNewFilter") + '</h5>' +
                 '<input type="text" id="jira-filter-xport-new-filter-name" class="filter-input" value="' + filterName + '">' +
                 '<input type="hidden" id="jira-filter-xport-new-filter-data" class="filter-input" value="' + filterData + '">' +
-                '<button id="jira-filter-xport-new-filter-name-save" class="jira-filter-xport-btn save">Save</button>' +
-                '<button id="jira-filter-xport-new-filter-name-cancel" class="jira-filter-xport-btn cancel">Cancel</button>' +
+                '<button id="jira-filter-xport-new-filter-name-save" class="jira-filter-xport-btn save">' + chrome.i18n.getMessage("Save") + '</button>' +
+                '<button id="jira-filter-xport-new-filter-name-cancel" class="jira-filter-xport-btn cancel">' + chrome.i18n.getMessage("Cancel") + '</button>' +
                 '</div>';
 
             document.body.appendChild(form);
@@ -66,7 +66,7 @@ var JiraFilterXport = function () {
                 if (filterData && filterName) {
                     chrome.storage.sync.get("jiraFilters", function (items) {
 
-                        items = Object.keys(items).length !== 0? items.jiraFilters: {};
+                        items = Object.keys(items).length !== 0 ? items.jiraFilters : {};
 
                         var newItem = JSON.parse(atob(filterData));
                         newItem.name = filterName;
@@ -90,15 +90,15 @@ var JiraFilterXport = function () {
          * generates the filters exists windows
          * @param filterName
          */
-        generateFilterExists: function(filterName){
+        generateFilterExists: function (filterName) {
             this.generateOverlay();
 
             var form = document.createElement("div");
             form.setAttribute("id", "jira-filter-xport-overlay-form");
             form.innerHTML = '<div class="inner-form">' +
-                '<span>This filter already exists in your storage.</span><br/>' +
-                '<span>Take a look a your <strong>'+filterName+'</strong> filter.</span>' +
-                '<br/><button id="jira-filter-xport-new-filter-name-close" class="jira-filter-xport-btn close">Close</button>' +
+                '<span>' + chrome.i18n.getMessage("FilterAlreadyExists") + '</span><br/>' +
+                '<span>' + chrome.i18n.getMessage("LookAtFilter", " <strong>" + filterName + "</strong>") + '</span>' +
+                '<br/><button id="jira-filter-xport-new-filter-name-close" class="jira-filter-xport-btn close">' + chrome.i18n.getMessage("Close") + '</button>' +
                 '</div>';
 
             document.body.appendChild(form);
@@ -124,7 +124,7 @@ var JiraFilterXport = function () {
 
                 //passing filter to form
                 filterFormInterface.generateAddNewFilter(btoa(JSON.stringify(request.addFilter)));
-            }else if (request.filterAlreadyExists){
+            } else if (request.filterAlreadyExists) {
                 window.console.log("got filter exists request, init window");
                 window.console.log(request.filterAlreadyExists);
 
