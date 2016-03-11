@@ -12,7 +12,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "src/bg/background.js",
+      "src/bg/background.min.js",
       "js/sha256.js"
     ]
   },
@@ -35,7 +35,7 @@
         "http://*/*"
       ],
       "css": [
-        "src/inject/inject.min.css"
+        "src/inject/inject.css"
       ]
     },
     {
