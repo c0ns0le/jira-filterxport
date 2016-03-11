@@ -5,6 +5,9 @@
   "extShowSaved": {
     "message": "Filter öffnen"
   },
+  "extNewFilterSc": {
+    "message": "Tastenkombination für neuen Filter"
+  },
   "SaveFilter": {
     "message": "Filter speichern"
   },

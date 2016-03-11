@@ -115,21 +115,25 @@ var JiraFilterXport = function () {
     //wait for context event
     chrome.runtime.onMessage.addListener(
         function (request, sender, sendResponse) {
-            sendResponse({status: "pong"});
             var filterFormInterface = new FilterXportInterface();
 
             if (request.addFilter) {
+                sendResponse({status: "pong"});
                 window.console.log("got new filter request, init window");
                 window.console.log(request.addFilter);
 
                 //passing filter to form
                 filterFormInterface.generateAddNewFilter(btoa(JSON.stringify(request.addFilter)));
             } else if (request.filterAlreadyExists) {
+                sendResponse({status: "pong"});
                 window.console.log("got filter exists request, init window");
                 window.console.log(request.filterAlreadyExists);
 
                 //init filter exists windows
                 filterFormInterface.generateFilterExists(request.filterAlreadyExists);
+            }else if (request.getFilterForSC) {
+                window.console.log("got shortcut request, return filter selection");
+                sendResponse({status: "pong shortcut"});
             }
         });
 }();

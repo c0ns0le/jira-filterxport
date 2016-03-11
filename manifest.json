@@ -16,6 +16,16 @@
       "js/sha256.js"
     ]
   },
+  "commands": {
+    "save_filter_shortcut": {
+      "suggested_key": {
+        "default": "Alt+Shift+J",
+        "windows": "Alt+Shift+J",
+        "mac": "Alt+Shift+J"
+      },
+      "description": "__MSG_extNewFilterSc__"
+    }
+  },
   "browser_action": {
     "default_icon": "icons/icon19.png",
     "default_title": "__MSG_extShowSaved__",
@@ -26,7 +36,8 @@
     "clipboardWrite",
     "contextMenus",
     "<all_urls>",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "content_scripts": [
     {

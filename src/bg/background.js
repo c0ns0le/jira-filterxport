@@ -43,3 +43,16 @@ chrome.contextMenus.create({
     "onclick": onSaveClicked
 });
 
+chrome.commands.onCommand.addListener(function (command) {
+    window.console.log('Command:', command);
+    if (command == "save_filter_shortcut") {
+        chrome.tabs.query({ currentWindow: true, active: true }, function (tab) {
+            chrome.tabs.sendMessage(tab[0].id, {getFilterForSC:"getFilterForSC"}, function (response) {
+                window.console.log("message send, got... " + response.status);
+            });
+        });
+        /*var newfilter = document.querySelector("textarea#advanced-search").text;
+         window.console.log('Filter:', newfilter);*/
+    }
+});
+

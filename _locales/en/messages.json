@@ -5,6 +5,9 @@
   "extShowSaved": {
     "message": "Show saved filters"
   },
+  "extNewFilterSc": {
+    "message": "Shortcut for adding a new Filter"
+  },
   "SaveFilter": {
     "message": "Save Filter"
   },
