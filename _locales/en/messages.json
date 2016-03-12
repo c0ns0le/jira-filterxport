@@ -53,5 +53,11 @@
   },
   "CheckoutFilter": {
     "message": "Checkout my cool Jira filter"
+  },
+  "Help": {
+    "message": "How to use this plugin?"
+  },
+  "HowToUseDesc": {
+    "message": "<li>open your favorite Jira filter.</li><li>enter the advanced filter view</li><li>select your filter query</li><li>select \"Save filter\" from the browser context menu</li><li>Done!</li>"
   }
 }

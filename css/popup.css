@@ -29,17 +29,28 @@ span.filterActions {
     margin-bottom: 0 !important;
 }
 
-.list-group-item:hover {
+.item:hover {
     border: 1px solid #337ab7;
     background-color: #337ab7;
-    opacity: 0.8;
+    color:#ffffff;
 }
 
-button.share-btn {
+button.share-btn{
     display: none;
     font-size: 25px;
     float: right;
-    margin: 5px 3px 0px;
+    margin: 2px 3px 0px;
+    padding-top: 7px;
+    color: #000000;
+}
+
+button.info-btn {
+    display: block;
+    font-size: 25px;
+    float: right;
+    margin: -7px 3px 0px;
+    color: #000000;
+    padding-top: 4px;
 }
 
 span.filterActions:hover > button.share-btn {
@@ -48,4 +59,8 @@ span.filterActions:hover > button.share-btn {
 
 input.copyhelper {
     visibility: hidden;
+}
+
+ul#help-list{
+    list-style-type: decimal;
 }

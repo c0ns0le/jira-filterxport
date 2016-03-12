@@ -6,7 +6,7 @@ var browserAction = function () {
             items = items.jiraFilters;
             window.console.log(items);
             for (var item in items) {
-                content += '<div class="list-group-item">' +
+                content += '<div class="list-group-item item">' +
                     '<span class="filterName">' + items[item].name + '</span>' +
                     '<span class="filterActions">' +
                     '<button class="share-mail share-btn glyphicon glyphicon-envelope" title="' + chrome.i18n.getMessage("ShareMail") + '" id="share_' + item + '" data-filter="' + btoa(JSON.stringify(items[item])) + '"></button>' +
@@ -17,11 +17,25 @@ var browserAction = function () {
             }
 
         } else {
-            content = '<div class="list-group-item active">' + chrome.i18n.getMessage("NoFilters") + '</div>'
+            content = '<div class="list-group-item active">' + chrome.i18n.getMessage("NoFilters") +
+                '<button class="info-btn glyphicon glyphicon-question-sign howto" title="' + chrome.i18n.getMessage("Help") + '"></button></div>' +
+                '<div id="help-desc" class="list-group-item hidden">' +
+                '<h5>'+ chrome.i18n.getMessage("SaveNewFilter") +'</h5>' +
+                '<ul id="help-list">' + chrome.i18n.getMessage("HowToUseDesc") + '</ul>' +
+                '</div>'
         }
 
         var list = document.querySelector("#item-list");
         list.innerHTML = content;
+
+        // add howto section
+        var howtobutton = document.getElementsByClassName("howto");
+        for (var i = 0; i < howtobutton.length; i++) {
+            howtobutton[i].addEventListener('click', function (event) {
+                var item = document.getElementById("help-desc");
+                item.className = item.className.replace('hidden', '');
+            }, false);
+        }
 
         // add mail actions
         var mailButtons = document.getElementsByClassName("share-mail");
@@ -30,7 +44,7 @@ var browserAction = function () {
                 var button = document.getElementById(event.target.id);
 
                 //open mail client
-                chrome.runtime.sendMessage({type: "mail-share", data:button.dataset.filter});
+                chrome.runtime.sendMessage({type: "mail-share", data: button.dataset.filter});
 
             }, false);
         }
@@ -62,8 +76,8 @@ var browserAction = function () {
                 var button = document.getElementById(event.target.id);
 
                 //deleting filter
-                chrome.runtime.sendMessage({type: "delete-filter", data:{id:button.id}},function(response){
-                    if(response.status.deleted === true){
+                chrome.runtime.sendMessage({type: "delete-filter", data: {id: button.id}}, function (response) {
+                    if (response.status.deleted === true) {
                         window.close();
                     }
                 });

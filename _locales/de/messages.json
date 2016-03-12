@@ -53,5 +53,11 @@
   },
   "CheckoutFilter": {
     "message": "Dieser Filter könnte für dich nützlich sein"
+  },
+  "Help": {
+    "message": "Hilfe"
+  },
+  "HowToUseDesc": {
+    "message": "<li>Öffnen Sie Ihre Lieblings-Jira-Filter</li><li>Wählen sie den erweiterten Filtermodus aus</li><li>Markieren Sie den Filter</li><li>Wählen Sie \"Filter speichern\" aus dem Browser-Kontextmenü</li><li>Fertig!</li>"
   }
 }
