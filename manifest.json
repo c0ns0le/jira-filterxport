@@ -1,6 +1,6 @@
 {
   "name": "JIRA FilterXport",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "manifest_version": 2,
   "description": "__MSG_extDescription__",
   "homepage_url": "https://github.com/patrick-blom/jira-filterxport",
@@ -12,7 +12,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "src/bg/background.js",
+      "src/bg/background.min.js",
       "js/sha256.js"
     ]
   },
@@ -44,7 +44,7 @@
         "http://*/*"
       ],
       "js": [
-        "src/inject/inject.js"
+        "src/inject/inject.min.js"
       ]
     }
   ]
