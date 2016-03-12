@@ -6,7 +6,6 @@ var onSaveClicked = function (event, tab) {
     window.console.log("onSaveClicked: check for hash" + id);
 
     chrome.storage.sync.get("jiraFilters", function (items) {
-
         if (Object.keys(items).length !== 0) {
 
             items = items.jiraFilters;
@@ -43,3 +42,35 @@ chrome.contextMenus.create({
     "onclick": onSaveClicked
 });
 
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        switch (request.type) {
+            case 'mail-share':
+                window.console.log("got mail-share request, opening tab");
+
+                var filter = JSON.parse(atob(request.data));
+                var emailUrl = "mailto:foor@bar.com?subject=Checkout my cool Jira filter: " + filter.name;
+
+                chrome.tabs.create({url: emailUrl}, function (tab) {
+                    window.console.log(tab);
+                    window.setTimeout(function () {
+                        chrome.tabs.remove(tab.id);
+                    }, 500);
+                });
+                break;
+
+            case 'delete-filter':
+                window.console.log("got delete request.");
+
+                chrome.storage.sync.get("jiraFilters", function (items) {
+                    items = items.jiraFilters;
+                    delete items[request.data.id];
+
+                    chrome.storage.sync.set({"jiraFilters": items}, function () {
+                        window.console.log("filter deleted");
+                    });
+                });
+                sendResponse({status: {deleted: true}});
+                break;
+        }
+    });

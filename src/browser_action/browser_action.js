@@ -1,7 +1,6 @@
 var browserAction = function () {
 
     chrome.storage.sync.get("jiraFilters", function (items) {
-
         var content = "";
         if (Object.keys(items).length !== 0 && Object.keys(items.jiraFilters).length !== 0) {
             items = items.jiraFilters;
@@ -35,12 +34,7 @@ var browserAction = function () {
                 copyToClipboard(chrome.i18n.getMessage("ShareMailPublish", filter.filter));
 
                 //open mail client
-                var emailUrl = "mailto:foor@bar.com?subject=Checkout my cool Jira filter: " + filter.name;
-                chrome.tabs.create({url: emailUrl}, function (tab) {
-                    setTimeOut(function () {
-                        chrome.tabs.remove(tab.id);
-                    }, 500);
-                });
+                chrome.runtime.sendMessage({type: "mail-share", data:button.dataset.filter});
 
             }, false);
         }
@@ -64,15 +58,11 @@ var browserAction = function () {
             deleteButtons[i].addEventListener('click', function (event) {
                 var button = document.getElementById(event.target.id);
 
-                chrome.storage.sync.get("jiraFilters", function (items) {
-                    items = items.jiraFilters;
-                    delete items[button.id];
-
-                    chrome.storage.sync.set({"jiraFilters": items}, function () {
-                        window.console.log("filter deleted");
+                //deleting filter
+                chrome.runtime.sendMessage({type: "delete-filter", data:{id:button.id}},function(response){
+                    if(response.status.deleted === true){
                         window.close();
-                    });
-
+                    }
                 });
 
             }, false);
@@ -81,7 +71,6 @@ var browserAction = function () {
 
     // helper function
     function copyToClipboard(data) {
-
         var input = document.createElement('input');
         input.setAttribute("id", "copyhelper");
         document.body.appendChild(input);
