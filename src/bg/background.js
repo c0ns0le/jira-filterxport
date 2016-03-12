@@ -49,7 +49,8 @@ chrome.runtime.onMessage.addListener(
                 window.console.log("got mail-share request, opening tab");
 
                 var filter = JSON.parse(atob(request.data));
-                var emailUrl = "mailto:foor@bar.com?subject=Checkout my cool Jira filter: " + filter.name;
+                var emailUrl = "mailto:?body="+chrome.i18n.getMessage("ShareMailPublish", filter.filter)+"&subject="+
+                    chrome.i18n.getMessage("CheckoutFilter")+": " + filter.name;
 
                 chrome.tabs.create({url: emailUrl}, function (tab) {
                     window.console.log(tab);

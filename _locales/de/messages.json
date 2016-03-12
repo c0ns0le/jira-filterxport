@@ -50,5 +50,8 @@
         "content": "$1"
       }
     }
+  },
+  "CheckoutFilter": {
+    "message": "Dieser Filter könnte für dich nützlich sein"
   }
 }
