@@ -45,5 +45,13 @@
         "content": "$1"
       }
     }
+  },
+  "ShareMailPublish": {
+    "message": "I share this Filter with JIRA FilterXport Chrome Extension: $FilterContent$",
+    "placeholders": {
+      "FilterContent": {
+        "content": "$1"
+      }
+    }
   }
 }

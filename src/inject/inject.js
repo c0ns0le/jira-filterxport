@@ -9,7 +9,6 @@ var JiraFilterXport = function () {
          * generates the basic overlay
          */
         generateOverlay: function () {
-
             this.overlay = document.createElement("div");
             this.overlay.setAttribute("class", "jira-filter-xport-overlay");
             this.overlay.setAttribute("id", "jira-filter-xport-overlay");
@@ -22,7 +21,6 @@ var JiraFilterXport = function () {
          * @param filterData
          */
         generateAddNewFilter: function (filterData) {
-
             //check if element is present
             var selectorTitle = document.querySelector('section#content header.saved-search-selector h1.search-title');
             if (!selectorTitle) {
