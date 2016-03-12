@@ -1,6 +1,6 @@
 {
   "name": "JIRA FilterXport",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "manifest_version": 2,
   "description": "__MSG_extDescription__",
   "homepage_url": "https://github.com/patrick-blom/jira-filterxport",

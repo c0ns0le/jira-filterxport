@@ -29,10 +29,6 @@ var browserAction = function () {
             mailButtons[i].addEventListener('click', function (event) {
                 var button = document.getElementById(event.target.id);
 
-                //copy to clipboard
-                var filter = JSON.parse(atob(button.dataset.filter));
-                copyToClipboard(chrome.i18n.getMessage("ShareMailPublish", filter.filter));
-
                 //open mail client
                 chrome.runtime.sendMessage({type: "mail-share", data:button.dataset.filter});
 
@@ -44,10 +40,17 @@ var browserAction = function () {
         for (var i = 0; i < copylButtons.length; i++) {
             copylButtons[i].addEventListener('click', function (event) {
                 var button = document.getElementById(event.target.id);
+                var filter = JSON.parse(atob(button.dataset.filter));
+                var input = document.createElement('input');
 
                 //copy to clipboard
-                var filter = JSON.parse(atob(button.dataset.filter));
-                copyToClipboard(filter.filter);
+                input.setAttribute("id", "copyhelper");
+                document.body.appendChild(input);
+                input.value = filter.filter;
+                input.focus();
+                input.select();
+                document.execCommand('Copy');
+                input.remove();
 
             }, false);
         }
@@ -68,19 +71,6 @@ var browserAction = function () {
             }, false);
         }
     });
-
-    // helper function
-    function copyToClipboard(data) {
-        var input = document.createElement('input');
-        input.setAttribute("id", "copyhelper");
-        document.body.appendChild(input);
-        input.value = data;
-        input.focus();
-        input.select();
-        document.execCommand('Copy');
-        input.remove();
-    }
-
 }();
 // load the browserAction
 document.addEventListener('DOMContentLoaded', browserAction, false);
